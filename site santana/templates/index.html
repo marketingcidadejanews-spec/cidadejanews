@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="CIDADE JÁ NEWS - Notícias de Lauro de Freitas, Bahia e Região Metropolitana de Salvador."
+    >
+
+    <title>CIDADE JÁ NEWS</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <!-- FAIXA SUPERIOR -->
+
+    <div class="urgente">
+        🔴 AGORA | Informação rápida de Lauro de Freitas e Bahia
+    </div>
+
+
+    <!-- CABEÇALHO -->
+
+    <header>
+
+        <div class="topo-header">
+
+            <a
+                href="/"
+                class="logo"
+            >
+                <span class="cidade">
+                    CIDADE
+                </span>
+
+                <span class="ja">
+                    JÁ
+                </span>
+
+                <span class="news">
+                    NEWS
+                </span>
+            </a>
+
+            <div class="header-info" aria-label="Informações do cabeçalho">
+                <div class="info-pill clima" aria-label="Previsão do tempo para Lauro de Freitas">
+                    <span class="clima__icone">{{ clima.icone if clima else '🌤️' }}</span>
+                    <div class="clima__texto">
+                        <strong>{{ clima.cidade if clima else 'Lauro de Freitas' }}</strong>
+                        <span>
+                            {% if clima %}
+                                {{ clima.descricao }}{% if clima.temperatura is not none %} • {{ clima.temperatura }}°C{% endif %}
+                            {% else %}
+                                Parcialmente nublado
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="meta-stack" aria-label="Data e hora atualizadas">
+                    <div class="meta-pill" aria-live="polite">
+                        <span class="meta-icon" aria-hidden="true">📅</span>
+                        <span class="meta-value" id="data-atual">Carregando...</span>
+                    </div>
+                    <div class="meta-pill" aria-live="polite">
+                        <span class="meta-icon" aria-hidden="true">🕒</span>
+                        <span class="meta-value" id="hora-atual">Carregando...</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="#inicio">
+                INÍCIO
+            </a>
+
+            <a href="#bahia">
+                BAHIA
+            </a>
+
+            <a href="#esportes">
+                ESPORTES
+            </a>
+
+            <a href="#politica">
+                POLÍTICA
+            </a>
+
+        </nav>
+
+    </header>
+
+    <!-- DESTAQUE PRINCIPAL -->
+
+    {% if destaque %}
+
+    <section
+        class="destaque"
+        id="inicio"
+        style="
+            background-image:
+            linear-gradient(
+                90deg,
+                rgba(0, 32, 84, 0.96),
+                rgba(0, 48, 120, 0.72),
+                rgba(0, 0, 0, 0.25)
+            ),
+            url('{{ destaque.imagem }}');
+        "
+    >
+
+        <div class="conteudo-destaque">
+
+            <span class="categoria">
+                {{ destaque.categoria }}
+            </span>
+
+            <h1>
+                {{ destaque.titulo }}
+            </h1>
+
+            {% if destaque.resumo %}
+
+            <p>
+                {{ destaque.resumo }}
+            </p>
+
+            {% else %}
+
+            <p>
+                Confira os detalhes desta notícia publicada no CIDADE JÁ NEWS.
+            </p>
+
+            {% endif %}
+
+            <div class="acoes-destaque">
+                <a
+                    href="{{ destaque.link }}"
+                    class="botao-destaque"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LER NOTÍCIA
+                </a>
+                <button
+                    type="button"
+                    class="botao-compartilhar botao-compartilhar--destaque"
+                    data-title="{{ destaque.titulo }}"
+                    data-link="{{ destaque.link }}"
+                    aria-label="Compartilhar notícia no WhatsApp"
+                >
+                    📤 Compartilhar
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+    {% else %}
+
+    <section
+        class="destaque"
+        id="inicio"
+    >
+
+        <div class="conteudo-destaque">
+
+            <span class="categoria">
+                CIDADE JÁ NEWS
+            </span>
+
+            <h1>
+                A notícia acontece.
+                O CIDADE JÁ NEWS conta.
+            </h1>
+
+            <p>
+                Informação rápida sobre Lauro de Freitas,
+                Salvador e todo o estado da Bahia.
+            </p>
+
+            <a
+                href="#noticias"
+                class="botao-destaque"
+            >
+                VER ÚLTIMAS NOTÍCIAS
+            </a>
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+    <section class="anuncie-bloco" aria-label="Campanha mensal do Cidade Já News">
+        <a
+            class="anuncie-card anuncie-card--banner"
+            href="https://wa.me/557192582117?text=Olá%2C%20quero%20exibir%20uma%20campanha%20no%20Cidade%20Já%20News"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <img
+                src="{{ url_for('static', filename='banner.cidadeja.png') }}"
+                alt="Campanha mensal Cidade Já News"
+                class="anuncie-banner"
+            >
+        </a>
+    </section>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+
+    <main>
+
+        <section
+            class="noticias"
+            id="noticias"
+        >
+
+            <div class="titulo">
+
+                <h2>
+                    NOTÍCIA QUENTE, DO JEITO DA NOSSA TERRA
+                </h2>
+
+            </div>
+
+            <section class="categoria-bloco" id="bahia">
+                <div class="titulo titulo-categoria">
+                    <h2>BAHIA</h2>
+                </div>
+
+                <div class="grade">
+                    {% if noticias_bahia %}
+                        {% for noticia in noticias_bahia %}
+                        <article class="card">
+                            <div class="imagem">
+                                <img
+                                    src="{{ noticia.imagem }}"
+                                    alt="{{ noticia.titulo }}"
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer"
+                                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c';"
+                                >
+                            </div>
+                            <div class="texto">
+                                <span>{{ noticia.categoria }}</span>
+                                <h3>{{ noticia.titulo }}</h3>
+                                {% if noticia.resumo %}
+                                <p>{{ noticia.resumo }}</p>
+                                {% else %}
+                                <p>Leia esta notícia publicada no portal CIDADE JÁ NEWS.</p>
+                                {% endif %}
+                                <div class="acoes-noticia">
+                                    <a href="{{ noticia.link }}" class="botao-link-noticia" target="_blank" rel="noopener noreferrer">LER NOTÍCIA →</a>
+                                    <button
+                                        type="button"
+                                        class="botao-compartilhar"
+                                        data-title="{{ noticia.titulo }}"
+                                        data-link="{{ noticia.link }}"
+                                        aria-label="Compartilhar notícia no WhatsApp"
+                                    >
+                                        📤 WhatsApp
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    {% else %}
+                        <p class="sem-noticias">Nenhuma notícia de Bahia no momento.</p>
+                    {% endif %}
+                </div>
+            </section>
+
+            <section class="categoria-bloco" id="esportes">
+                <div class="titulo titulo-categoria">
+                    <h2>Esporte & Competição</h2>
+                </div>
+
+                <div class="grade">
+                    {% if noticias_esportes %}
+                        {% for noticia in noticias_esportes %}
+                        <article class="card">
+                            <div class="imagem">
+                                <img
+                                    src="{{ noticia.imagem }}"
+                                    alt="{{ noticia.titulo }}"
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer"
+                                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c';"
+                                >
+                            </div>
+                            <div class="texto">
+                                <span>{{ noticia.categoria }}</span>
+                                <h3>{{ noticia.titulo }}</h3>
+                                {% if noticia.resumo %}
+                                <p>{{ noticia.resumo }}</p>
+                                {% else %}
+                                <p>Leia esta notícia publicada no portal CIDADE JÁ NEWS.</p>
+                                {% endif %}
+                                <div class="acoes-noticia">
+                                    <a href="{{ noticia.link }}" class="botao-link-noticia" target="_blank" rel="noopener noreferrer">LER NOTÍCIA →</a>
+                                    <button
+                                        type="button"
+                                        class="botao-compartilhar"
+                                        data-title="{{ noticia.titulo }}"
+                                        data-link="{{ noticia.link }}"
+                                        aria-label="Compartilhar notícia no WhatsApp"
+                                    >
+                                        📤 WhatsApp
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    {% else %}
+                        <p class="sem-noticias">Nenhuma notícia de esportes local no momento.</p>
+                    {% endif %}
+                </div>
+            </section>
+
+            <section class="categoria-bloco" id="politica">
+                <div class="titulo titulo-categoria">
+                    <h2>Política & Poder</h2>
+                </div>
+
+                <div class="grade">
+                    {% if noticias_politica %}
+                        {% for noticia in noticias_politica %}
+                        <article class="card">
+                            <div class="imagem">
+                                <img
+                                    src="{{ noticia.imagem }}"
+                                    alt="{{ noticia.titulo }}"
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer"
+                                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c';"
+                                >
+                            </div>
+                            <div class="texto">
+                                <span>{{ noticia.categoria }}</span>
+                                <h3>{{ noticia.titulo }}</h3>
+                                {% if noticia.resumo %}
+                                <p>{{ noticia.resumo }}</p>
+                                {% else %}
+                                <p>Leia esta notícia publicada no portal CIDADE JÁ NEWS.</p>
+                                {% endif %}
+                                <div class="acoes-noticia">
+                                    <a href="{{ noticia.link }}" class="botao-link-noticia" target="_blank" rel="noopener noreferrer">LER NOTÍCIA →</a>
+                                    <button
+                                        type="button"
+                                        class="botao-compartilhar"
+                                        data-title="{{ noticia.titulo }}"
+                                        data-link="{{ noticia.link }}"
+                                        aria-label="Compartilhar notícia no WhatsApp"
+                                    >
+                                        📤 WhatsApp
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    {% else %}
+                        <p class="sem-noticias">Nenhuma notícia de política do Brasil e do mundo no momento.</p>
+                    {% endif %}
+                </div>
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        <div class="rodape-conteudo">
+
+            <div>
+
+                <div class="logo logo-rodape">
+
+                    <span class="cidade">
+                        CIDADE
+                    </span>
+
+                    <span class="ja">
+                        JÁ
+                    </span>
+
+                    <span class="news">
+                        NEWS
+                    </span>
+
+                </div>
+
+                <p>
+                    Informação rápida, moderna e perto de você.
+                </p>
+
+            </div>
+
+
+            <div class="rodape-links">
+
+                <strong>
+                    EDITORIAS
+                </strong>
+
+                <a href="#noticias">
+                    Lauro de Freitas
+                </a>
+
+                <a href="#noticias">
+                    Bahia
+                </a>
+
+                <a href="#noticias">
+                    Polícia
+                </a>
+
+                <a href="#noticias">
+                    Esportes
+                </a>
+
+            </div>
+
+
+            <div class="rodape-links">
+
+                <strong>
+                    CONTATO
+                </strong>
+
+                <a
+                    href="https://wa.me/557192582117"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    WhatsApp
+                </a>
+
+                <span>
+                    Lauro de Freitas - Bahia
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="direitos">
+            © 2026 CIDADE JÁ NEWS. Todos os direitos reservados.
+        </div>
+
+    </footer>
+
+
+    <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+
+    <a
+        class="whatsapp"
+        href="https://wa.me/557192582117?text=Olá%2C%20vim%20pelo%20site%20CIDADE%20JÁ%20NEWS"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Falar no WhatsApp"
+        aria-label="Falar no WhatsApp"
+    >
+        ☎
+    </a>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

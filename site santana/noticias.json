@@ -1,0 +1,23 @@
+[
+  {
+    "titulo": "Lauro de Freitas recebe novos investimentos",
+    "resumo": "A cidade de Lauro de Freitas anunciou novos investimentos para melhorar os serviços públicos.",
+    "categoria": "Lauro de Freitas",
+    "imagem": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
+    "link": "#"
+  },
+  {
+    "titulo": "Bahia anuncia novos projetos para o turismo",
+    "resumo": "Os novos projetos devem fortalecer o turismo e gerar empregos em diversas cidades da Bahia.",
+    "categoria": "Bahia",
+    "imagem": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+    "link": "#"
+  },
+  {
+    "titulo": "Região Metropolitana terá novas ações de mobilidade",
+    "resumo": "As ações pretendem melhorar o transporte entre Salvador e as cidades da região metropolitana.",
+    "categoria": "Salvador e Região",
+    "imagem": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000",
+    "link": "#"
+  }
+]

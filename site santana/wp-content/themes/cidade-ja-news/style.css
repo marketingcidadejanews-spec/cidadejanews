@@ -1,0 +1,176 @@
+/*
+Theme Name: Cidade Já News
+Theme URI: https://cidadejanews.com
+Description: Tema WordPress para o portal Cidade Já News, preparado para Elementor e editor de blocos.
+Version: 1.0.0
+Author: Copilot
+Text Domain: cidade-ja-news
+*/
+
+:root {
+    --azul: #003b82;
+    --vermelho: #e30613;
+    --amarelo: #ffc800;
+    --cinza: #6b7280;
+    --fundo: #f4f7fc;
+    --branco: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--fundo);
+    color: #111827;
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.site-header {
+    background: linear-gradient(135deg, var(--branco) 0%, #f8fbff 100%);
+    border-bottom: 1px solid rgba(0,59,130,0.08);
+    padding: 20px 7%;
+}
+
+.site-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 16px;
+}
+
+.site-brand .cidade { color: var(--azul); }
+.site-brand .ja { background: var(--vermelho); color: var(--branco); padding: 6px 8px; transform: skew(-5deg); }
+.site-brand .news { color: var(--amarelo); text-shadow: 1px 1px 0 #111827; }
+
+.site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.site-nav a {
+    color: var(--azul);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.site-main {
+    width: min(92%, 1200px);
+    margin: 0 auto;
+    padding: 40px 0 70px;
+}
+
+.hero-editorial {
+    background: linear-gradient(90deg, rgba(0,32,84,0.96), rgba(0,48,120,0.7)), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee');
+    background-size: cover;
+    background-position: center;
+    color: var(--branco);
+    border-radius: 22px;
+    padding: 56px 40px;
+    margin-bottom: 36px;
+}
+
+.hero-editorial h1 {
+    font-size: clamp(2rem, 3.4vw, 3rem);
+    margin: 0 0 14px;
+    line-height: 1.1;
+}
+
+.hero-editorial p {
+    max-width: 700px;
+    margin: 0 0 20px;
+    color: #e5e7eb;
+}
+
+.hero-cta {
+    display: inline-block;
+    background: var(--vermelho);
+    color: var(--branco);
+    padding: 12px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.section-title {
+    color: var(--azul);
+    font-size: 24px;
+    margin: 24px 0 18px;
+    border-left: 4px solid var(--amarelo);
+    padding-left: 12px;
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.post-card {
+    background: var(--branco);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,30,80,0.10);
+}
+
+.post-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.post-card__body {
+    padding: 20px;
+}
+
+.post-card__meta {
+    color: var(--vermelho);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.post-card h3 {
+    margin: 10px 0;
+    font-size: 20px;
+    color: var(--azul);
+}
+
+.post-card p {
+    color: var(--cinza);
+    font-size: 14px;
+    margin-bottom: 14px;
+}
+
+.post-card a {
+    color: var(--vermelho);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.site-footer {
+    background: #04162f;
+    color: var(--branco);
+    text-align: center;
+    padding: 24px 20px;
+}
+
+@media (max-width: 900px) {
+    .post-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+    .post-grid { grid-template-columns: 1fr; }
+    .hero-editorial { padding: 36px 20px; }
+}

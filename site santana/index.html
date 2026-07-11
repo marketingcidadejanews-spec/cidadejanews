@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CIDADE JÁ NEWS</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <header class="cabecalho">
+
+        <div class="logo">
+            <span class="cidade">CIDADE</span>
+            <span class="ja">JÁ</span>
+            <span class="news">NEWS</span>
+        </div>
+
+        <nav>
+            <a href="#">Início</a>
+            <a href="#">Lauro de Freitas</a>
+            <a href="#">Bahia</a>
+            <a href="#">Salvador e Região</a>
+        </nav>
+
+    </header>
+
+    <section class="destaque">
+
+        <div class="texto-destaque">
+            <span>NOTÍCIAS DA BAHIA</span>
+
+            <h1>
+                Informação rápida, moderna e perto de você
+            </h1>
+
+            <p>
+                Acompanhe as principais notícias de Lauro de Freitas,
+                Salvador e todo o estado da Bahia.
+            </p>
+        </div>
+
+    </section>
+
+    <main class="conteudo">
+
+        <div class="titulo-secao">
+            <h2>Últimas notícias</h2>
+        </div>
+
+        <section class="grade-noticias">
+
+            {% for noticia in noticias %}
+
+            <article class="card-noticia">
+
+                <img
+                    src="{{ noticia.imagem }}"
+                    alt="{{ noticia.titulo }}"
+                >
+
+                <div class="card-conteudo">
+
+                    <span class="categoria">
+                        {{ noticia.categoria }}
+                    </span>
+
+                    <h3>
+                        {{ noticia.titulo }}
+                    </h3>
+
+                    <p>
+                        {{ noticia.resumo }}
+                    </p>
+
+                    <a href="{{ noticia.link }}">
+                        Ler notícia
+                    </a>
+
+                </div>
+
+            </article>
+
+            {% endfor %}
+
+        </section>
+
+    </main>
+
+    <a
+        class="whatsapp"
+        href="https://wa.me/557192582117"
+        target="_blank"
+    >
+        WhatsApp
+    </a>
+
+    <footer>
+        <p>
+            © 2026 CIDADE JÁ NEWS
+        </p>
+    </footer>
+
+</body>
+</html>

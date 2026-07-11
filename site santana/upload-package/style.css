@@ -1,0 +1,20 @@
+/*
+Theme Name: Cidade Já News
+Theme URI: https://cidadejanews.com
+Description: Tema WordPress para o portal Cidade Já News, preparado para Elementor e editor de blocos.
+Version: 1.0.0
+Author: Copilot
+Text Domain: cidade-ja-news
+*/
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fc;
+    color: #111827;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
